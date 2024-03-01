@@ -1,5 +1,8 @@
 FROM grafana/loki:2.9.4
 
+# expose the Loki server port
+EXPOSE 9090
+
 COPY loki.yaml /etc/loki/local-config.yaml
 
 CMD ["-config.file=/etc/loki/local-config.yaml"]
