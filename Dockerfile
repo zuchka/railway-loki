@@ -1,11 +1,34 @@
+# Start from the Loki base image
 FROM grafana/loki:2.9.4
 
-# expose the Loki server port
-EXPOSE 9090
+# Install Promtail
+RUN apk add --no-cache curl && \
+    curl -fSL -o promtail.gz "https://github.com/grafana/loki/releases/download/v2.9.4/promtail-linux-amd64.zip" && \
+    gunzip promtail.gz && \
+    chmod a+x promtail && \
+    mv promtail /usr/local/bin
 
+# Copy Loki and Promtail configuration files
 COPY loki.yaml /etc/loki/local-config.yaml
+COPY promtail.yaml /etc/promtail/promtail.yaml
 
-CMD ["-config.file=/etc/loki/local-config.yaml"]
+# Start Loki and Promtail
+CMD ["sh", "-c", "loki -config.file=/etc/loki/local-config.yaml & promtail -config.file=/etc/promtail/promtail.yaml"]
+
+
+
+
+
+
+
+# FROM grafana/loki:2.9.4
+
+# # expose the Loki server port
+# EXPOSE 9090
+
+# COPY loki.yaml /etc/loki/local-config.yaml
+
+# CMD ["-config.file=/etc/loki/local-config.yaml"]
 
 
 
