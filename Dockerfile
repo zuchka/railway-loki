@@ -15,8 +15,8 @@ RUN apk add --no-cache curl unzip && \
     mv promtail-linux-amd64 /usr/local/bin
     
 # Start Loki and Promtail
-# CMD ["-config.file=/etc/loki/local-config.yaml"]
-CMD ["sh", "-c", "/bin/loki --config.file=/etc/loki/local-config.yaml"]
+CMD ["-config.file=/etc/loki/local-config.yaml"]
+# CMD ["sh", "-c", "/bin/loki --config.file=/etc/loki/local-config.yaml"]
 
 
 # FROM grafana/loki:2.9.4
