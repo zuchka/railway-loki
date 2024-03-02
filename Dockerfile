@@ -15,4 +15,5 @@ COPY loki.yaml /etc/loki/config.yaml
 COPY promtail.yaml /etc/promtail/config.yml
 
 # Start Loki and Promtail
-CMD ["sh", "-c", "loki -config.file=/etc/loki/config.yaml & promtail -config.file=/etc/promtail/config.yml"]
+CMD ["-config.file=/etc/loki/config.yaml"]
+# CMD ["sh", "-c", "loki -config.file=/etc/loki/config.yaml & promtail -config.file=/etc/promtail/config.yml"]
