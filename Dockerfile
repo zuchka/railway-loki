@@ -5,10 +5,10 @@ USER root
 
 # Install Promtail
 RUN apk add --no-cache curl unzip && \
-    curl -fSL -o promtail.zip "https://github.com/grafana/loki/releases/download/v2.9.4/promtail-linux-amd64.zip" && \
-    unzip promtail.zip && \
-    chmod a+x promtail && \
-    mv promtail /usr/local/bin
+    curl -fSL "https://github.com/grafana/loki/releases/download/v2.9.4/promtail-linux-amd64.zip" && \
+    unzip promtail-linux-amd64.zip && \
+    chmod a+x promtail-linux-amd64 && \
+    mv promtail-linux-amd64 /usr/local/bin
 
 # Copy Loki and Promtail configuration files
 COPY loki.yaml /etc/loki/local-config.yaml
