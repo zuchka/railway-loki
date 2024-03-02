@@ -12,7 +12,7 @@ RUN apk add --no-cache curl unzip && \
 
 # Copy Loki and Promtail configuration files
 COPY loki.yaml /etc/loki/local-config.yaml
-COPY promtail.yaml /etc/promtail/promtail.yaml
+COPY promtail.yaml /etc/promtail/config.yml
 
 # Start Loki and Promtail
-CMD ["sh", "-c", "loki -config.file=/etc/loki/local-config.yaml & promtail -config.file=/etc/promtail/promtail.yaml"]
+CMD ["sh", "-c", "loki -config.file=/etc/loki/local-config.yaml & promtail -config.file=/etc/promtail/config.yml"]
