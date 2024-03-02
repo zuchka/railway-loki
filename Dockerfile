@@ -15,8 +15,8 @@ COPY loki.yaml /etc/loki/local-config.yaml
 COPY promtail.yaml /etc/promtail/config.yml
 
 # Start Loki and Promtail
-CMD ["-config.file=/etc/loki/local-config.yaml"]
-# CMD ["sh", "-c", "loki -config.file=/etc/loki/config.yaml & promtail -config.file=/etc/promtail/config.yml"]
+# CMD ["-config.file=/etc/loki/local-config.yaml"]
+CMD ["sh", "-c", "loki -config.file=/etc/loki/local-config.yaml & promtail -config.file=/etc/promtail/config.yml"]
 
 
 # FROM grafana/loki:2.9.4
