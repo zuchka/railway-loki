@@ -22,7 +22,6 @@ RUN curl -fSL --output promtail.zip "https://github.com/grafana/loki/releases/do
 COPY loki.yaml /etc/loki/local-config.yaml
 COPY promtail.yaml /etc/promtail/config.yml
 
-EXPOSE 3100
-
+EXPOSE 3100 1514 9080
 # Start Loki and Promtail
 CMD ["sh", "-c", "/usr/local/bin/loki-linux-amd64 --config.file=/etc/loki/local-config.yaml & /usr/local/bin/promtail-linux-amd64 --config.file=/etc/promtail/config.yml -print-config-stderr"]
