@@ -5,8 +5,8 @@ USER root
 
 # Install Promtail
 RUN apk add --no-cache curl unzip && \
-    curl -fSL "https://github.com/grafana/loki/releases/download/v2.9.4/promtail-linux-amd64.zip" && \
-    unzip promtail-linux-amd64.zip && \
+    curl -fSL --output promtail.zip "https://github.com/grafana/loki/releases/download/v2.9.4/promtail-linux-amd64.zip" && \
+    unzip promtail.zip && \
     chmod a+x promtail-linux-amd64 && \
     mv promtail-linux-amd64 /usr/local/bin
 
